@@ -14,18 +14,18 @@ Get commit history by repository name and branch name by api key
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
+|Name | Type | Description  | Required |
 |------------- | ------------- | ------------- | -------------|
-| **ownerUsername** | **String**| repository&#39;s owner | [default to null] |
-| **repositoryName** | **String**| repository&#39;s name | [default to null] |
-| **sha** | **String**| Sha is the sha of the commit (optional) | [default to null] |
-| **page** | **Integer**| Page is the page number (default: 1) (optional) | [optional] [default to 1] |
-| **pageSize** | **Integer**| PageSize is the page size (default: 10) (optional) | [optional] [default to 10] |
-| **path** | **String**| Path is the path of the file (optional) | [optional] [default to null] |
-| **repoType** | **String**|  | [optional] [default to null] |
+| **ownerUsername** | **String**| repository&#39;s owner | **yes** |
+| **repositoryName** | **String**| repository&#39;s name | **yes** |
+| **sha** | **String**| Sha is the sha of the commit (optional) | **yes** |
+| **page** | **Integer**| Page is the page number (default: 1) (optional) | no |
+| **pageSize** | **Integer**| PageSize is the page size (default: 10) (optional) | no |
+| **path** | **String**| Path is the path of the file (optional) | no |
+| **repoType** | **String**|  | no |
 
 ### Return type
 
-[**response.GetCommitHistoryResponse**](../Models/response.GetCommitHistoryResponse.md)
+Promise<[**response.GetCommitHistoryResponse**](../Models/response.GetCommitHistoryResponse.md)>
 
 
