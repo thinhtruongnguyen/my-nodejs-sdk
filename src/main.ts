@@ -18,8 +18,15 @@ const sdk = new SdkClient({ apiKey: API_KEY });
 async function run() {
 
   try {
-    const resHistories = await sdk.apiKey.getTaskHistories(LIMIT, OFFSET);
-    console.log("Response from getTaskHistories is:", resHistories, resHistories.data?.records);
+    const request: RequestGetApiKeyStatisticsByModelIdRequest = {
+      from: FROM,
+      to: TO,
+    };
+    const respGetApiKeyStatistics = await sdk.apiKey.getApiKeyStatistics(request, MODEL_ID);
+    console.log("GetApiKeyStatistics:", respGetApiKeyStatistics);
+
+    // const resHistories = await sdk.apiKey.getTaskHistories(LIMIT, OFFSET);
+    // console.log("Response from getTaskHistories is:", resHistories, resHistories.data?.records);
 
   } catch (err: any) {
     console.log(err);
