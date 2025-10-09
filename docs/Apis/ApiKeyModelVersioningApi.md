@@ -12,112 +12,72 @@ All URIs are relative to *http://localhost/api/v1*
 
 <a name="apiKeyModelIdVersioningDelete"></a>
 # **apiKeyModelIdVersioningDelete**
-> response.SuccessResponse apiKeyModelIdVersioningDelete(id, commitHash, x-api-key)
 
 Delete Model Versioning By Commit Hash By Api Key
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
+|Name | Type | Description  | Required |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Model&#39;s id | [default to null] |
-| **commitHash** | **String**|  | [default to null] |
-| **x-api-key** | **String**| api-key | [optional] [default to null] |
+| **id** | **String**| Model&#39;s id | **yes** |
+| **commitHash** | **String**|  | **yes** |
 
 ### Return type
 
-[**response.SuccessResponse**](../Models/response.SuccessResponse.md)
+Promise<[**response.SuccessResponse**](../Models/response.SuccessResponse.md)>
 
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 <a name="apiKeyModelIdVersioningGet"></a>
 # **apiKeyModelIdVersioningGet**
-> response.ModelVersioningGroupLiteResponse apiKeyModelIdVersioningGet(id, x-api-key)
 
 Get Current Model Versioning By Model Id By ApiKey
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
+|Name | Type | Description  | Required |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Model&#39;s id | [default to null] |
-| **x-api-key** | **String**| api-key | [optional] [default to null] |
+| **id** | **String**| Model&#39;s id | **yes** |
 
 ### Return type
 
-[**response.ModelVersioningGroupLiteResponse**](../Models/response.ModelVersioningGroupLiteResponse.md)
+Promise<[**response.ModelVersioningGroupLiteResponse**](../Models/response.ModelVersioningGroupLiteResponse.md)>
 
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 <a name="apiKeyModelIdVersioningListGet"></a>
 # **apiKeyModelIdVersioningListGet**
-> response.GetListModelVersioningLiteResponse apiKeyModelIdVersioningListGet(id, x-api-key, limit, offset, verifyStatus)
 
 Get Verified List Model Versioning By Api Key
 
-    verifyStatus is verified or all. Use verified to get verified versioning. Use all to get verified history
+
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
+|Name | Type | Description  | Required |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Model&#39;s id | [default to null] |
-| **x-api-key** | **String**| api-key | [optional] [default to null] |
-| **limit** | **Integer**|  | [optional] [default to 10] |
-| **offset** | **Integer**|  | [optional] [default to 0] |
-| **verifyStatus** | **String**|  | [optional] [default to null] [enum: verified, all] |
+| **id** | **String**| Model&#39;s id | **yes** |
+| **limit** | **Integer**| Default: 10 | no |
+| **offset** | **Integer**| Default: 0 | no |
+| **verifyStatus** | **String**|allowed: verified, all  | no|
 
 ### Return type
 
-[**response.GetListModelVersioningLiteResponse**](../Models/response.GetListModelVersioningLiteResponse.md)
+Promise<[**response.GetListModelVersioningLiteResponse**](../Models/response.GetListModelVersioningLiteResponse.md)>
 
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 <a name="apiKeyModelIdVersioningPut"></a>
 # **apiKeyModelIdVersioningPut**
-> response.SuccessResponse apiKeyModelIdVersioningPut(id, commitHash, x-api-key)
 
 Change Model Versioning By Commit Hash By Api Key
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
+|Name | Type | Description  | Required |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Model&#39;s id | [default to null] |
-| **commitHash** | **String**|  | [default to null] |
-| **x-api-key** | **String**| api-key | [optional] [default to null] |
+| **id** | **String**| Model&#39;s id | **yes** |
+| **commitHash** | **String**|  | **yes** |
 
 ### Return type
 
-[**response.SuccessResponse**](../Models/response.SuccessResponse.md)
+Promise<[**response.SuccessResponse**](../Models/response.SuccessResponse.md)>
 
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 

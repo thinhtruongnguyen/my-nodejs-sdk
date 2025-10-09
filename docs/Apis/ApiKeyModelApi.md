@@ -13,131 +13,80 @@ All URIs are relative to *http://localhost/api/v1*
 
 <a name="apiKeyModelIdInfoGet"></a>
 # **apiKeyModelIdInfoGet**
-> response.ApiKeyInfoResponse apiKeyModelIdInfoGet(id, x-api-key)
 
 Get Api Key Model Info
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
+|Name | Type | Description  | Required |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Model&#39;s id | [default to null] |
-| **x-api-key** | **String**| api-key | [optional] [default to null] |
+| **id** | **String**| Model&#39;s id | **yes** |
+
 
 ### Return type
 
-[**response.ApiKeyInfoResponse**](../Models/response.ApiKeyInfoResponse.md)
+Promise<[**response.ApiKeyInfoResponse**](../Models/response.ApiKeyInfoResponse.md)>
 
-### Authorization
 
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 <a name="apiKeyModelIdServingGet"></a>
 # **apiKeyModelIdServingGet**
-> response.CheckModelIsServingResponse apiKeyModelIdServingGet(id, x-api-key)
 
 Check Model Is Serving
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
+|Name | Type | Description  | Required |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Model&#39;s id | [default to null] |
-| **x-api-key** | **String**| api-key | [optional] [default to null] |
+| **id** | **String**| Model&#39;s id | **yes** |
+
 
 ### Return type
 
-[**response.CheckModelIsServingResponse**](../Models/response.CheckModelIsServingResponse.md)
+Promise<[**response.CheckModelIsServingResponse**](../Models/response.CheckModelIsServingResponse.md)>
 
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 <a name="apiKeyModelIdStatisticsPost"></a>
 # **apiKeyModelIdStatisticsPost**
-> response.GetTaskStatisticsResponse apiKeyModelIdStatisticsPost(id, input, x-api-key)
 
 Get Model Statistics
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
+|Name | Type | Description  | Required |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Model&#39;s id | [default to null] |
-| **input** | [**request.GetApiKeyStatisticsByModelIdRequest**](../Models/request.GetApiKeyStatisticsByModelIdRequest.md)| Get Api Key Statistics By Model Id Request | |
-| **x-api-key** | **String**| api-key | [optional] [default to null] |
+| **id** | **String**| Model&#39;s id | **yes** |
+| **input** | [**request.GetApiKeyStatisticsByModelIdRequest**](../Models/request.GetApiKeyStatisticsByModelIdRequest.md)| Get Api Key Statistics By Model Id Request |**yes** |
 
 ### Return type
 
-[**response.GetTaskStatisticsResponse**](../Models/response.GetTaskStatisticsResponse.md)
+Promise<[**response.GetTaskStatisticsResponse**](../Models/response.GetTaskStatisticsResponse.md)>
 
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json, application/x-www-form-urlencoded
-- **Accept**: application/json
 
 <a name="apiKeyModelIdTaskCostGet"></a>
 # **apiKeyModelIdTaskCostGet**
-> response.EstimateCostResponse apiKeyModelIdTaskCostGet(id, x-api-key)
 
 Get cost to compute task by model api key
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
+|Name | Type | Description  | Required |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Model&#39;s id | [default to null] |
-| **x-api-key** | **String**| api-key | [optional] [default to null] |
+| **id** | **String**| Model&#39;s id | **yes** |
 
 ### Return type
 
-[**response.EstimateCostResponse**](../Models/response.EstimateCostResponse.md)
+Promise<[**response.EstimateCostResponse**](../Models/response.EstimateCostResponse.md)>
 
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 <a name="apiKeyModelVerifySupportPlatformsGet"></a>
 # **apiKeyModelVerifySupportPlatformsGet**
-> response.GetListPlatformSupportResponse apiKeyModelVerifySupportPlatformsGet(x-api-key)
 
 Get List Platforms Support By Api Key
 
-### Parameters
-
-|Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **x-api-key** | **String**| api-key | [optional] [default to null] |
 
 ### Return type
 
-[**response.GetListPlatformSupportResponse**](../Models/response.GetListPlatformSupportResponse.md)
+Promise<[**response.GetListPlatformSupportResponse**](../Models/response.GetListPlatformSupportResponse.md)>
 
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
