@@ -1,0 +1,4 @@
+specs/
+.env
+.env.* 
+scripts/commands.txt
