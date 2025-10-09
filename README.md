@@ -16,7 +16,7 @@ npm i @meocam/nodejs-client
 ### Code sample
 
 ```typescript
-const SdkClient = require("@meocam/nodejs-client").default;
+const SdkClient = require("@meocam/nodejs-client-2").default;
 
 const client = new SdkClient({
   apiKey: "d9eb2842bb95039bfc31196432a82998bc5930f4",
@@ -50,34 +50,92 @@ const INPUT_PARAMS = {
 
 (async () => {
   try {
-    //getApiKeyPermission
-    // const res2 = await client.apiKey.getApiKeyPermission();
-    // console.log("api-key/permission is:", res2.body);
-    // console.log("api-key/permission status is:", res2.body.status);
-    // console.log("api-key/permission data is:", res2.body.data);
-    // console.log("api-key/permission data limitModels is:", res2.body.data.limitModels);
-    // console.log("api-key/permission message is:", res2.body.message);
+    const request = {
+      from: FROM,
+      to: TO,
+    };
+    const requestCalculateCostToVerifyModel = {
+      commitHash: COMMIT_HASH,
+      platforms: PLATFORMS
+    };
 
-    //Get Tasks Histories
-    // const res3 = await client.apiKey.getTaskHistories(LIMIT, OFFSET);
-    // console.log("api-key/task/histories is:", res3.body);
-    // console.log(res3.body.data.total)
+    const respGetListVerifiedModelVersioning = await client.apiKeyModelVersioning.getListVerifiedModelVersioning(MODEL_ID, OFFSET, LIMIT, VERIFY_STATUS);
+    console.log("GetListVerifiedModelVersioning:", respGetListVerifiedModelVersioning);
 
-    //Get Tasks Result
-    // const res4 = await client.apiKey.getTaskResult(TASK_ID);
-    // console.log("api-key/task/{{TASK_ID}}/result is:", res4.body);
+    const respVerifyModel = await client.apiKeyModelVerify.verifyModel(MODEL_ID, requestCalculateCostToVerifyModel);
+    console.log("verifyModel:", respVerifyModel);
 
-    //Get Tasks Result
-    const res5 = await client.apiKey.getApiKeyStatistics(FROM, TO);
-    console.log("api-key/statistics is:", res5.body);
+    const respGetListPlatformsSupport = await client.apiKeyModel.getListPlatformsSupport();
+    console.log("GetListPlatformsSupport:", respGetListPlatformsSupport);
+
+    const respGetModelStatistics = await client.apiKeyModel.getModelStatistics(MODEL_ID, request);
+    console.log("GetModelStatistics:", respGetModelStatistics);
+
+    const respGetModelInfo = await client.apiKeyModel.getModelInfo(MODEL_ID);
+    console.log("GetModelInfo:", respGetModelInfo);
+
+    const respBalance = await client.apiKey.getBalance();
+    console.log("Balance: ", respBalance)
+
+    const respGetApiKeyPermission = await client.apiKey.getApiKeyPermission()
+    console.log("GetApiKeyPermission:", respGetApiKeyPermission)
+
+    const respHistories = await client.apiKey.getTaskHistories(LIMIT, OFFSET);
+    console.log("GetTaskHistories:", respHistories);
+
+
+    const respGetApiKeyStatistics = await client.apiKey.getApiKeyStatistics(request, MODEL_ID);
+    console.log("GetApiKeyStatistics:", respGetApiKeyStatistics);
+
+    const requestCreateTask = {
+      files: FILE_LIST,
+      inputParams: INPUT_PARAMS,
+      modelId: MODEL_ID,
+    };
+    const respCreateTask = await client.apiKey.createTask(requestCreateTask);
+    console.log("createTask:", respCreateTask);
+
+    const respCancelTask = await client.apiKey.cancelTask(TASK_ID)
+    console.log("cancelTask:", respCancelTask);
+
+    const respTaskResult = await client.apiKey.getTaskResult(TASK_ID);
+    console.log("GetTaskResult:", respTaskResult);
+
+    const respCheckModelIsServing = await client.apiKeyModel.checkModelIsServing(MODEL_ID);
+    console.log("CheckModelIsServing:", respCheckModelIsServing);
+
+    const respGetModelTaskCost = await client.apiKeyModel.getModelTaskCost(MODEL_ID);
+    console.log("GetModelTaskCost:", respGetModelTaskCost);
+
+    const respCalculateCostToVerifyModel = await client.apiKeyModelVerify.calculateCostToVerifyModel(MODEL_ID, requestCalculateCostToVerifyModel);
+    console.log("CalculateCostToVerifyModel:", respCalculateCostToVerifyModel);
+
+    const respPreCheckToVerifyModel = await client.apiKeyModelVerify.preCheckToVerifyModel(MODEL_ID, requestCalculateCostToVerifyModel);
+    console.log("PreCheckToVerifyModel:", respPreCheckToVerifyModel);
+
+    const respGetListVerifyModelTaskByCommitHashAndStatus = await client.apiKeyModelVerify.getListVerifyModelTaskByCommitHashAndStatus(MODEL_ID, COMMIT_HASH, VERIFY_STATUS);
+    console.log("GetListVerifyModelTaskByCommitHashAndStatus:", respGetListVerifyModelTaskByCommitHashAndStatus);
+
+    const respGetVerifyPlatformTaskById = await client.apiKeyModelVerify.getVerifyPlatformTaskById(TASK_ID);
+    console.log("GetVerifyPlatformTaskById:", respGetVerifyPlatformTaskById);
+
+    const respGetModelVersioningByTaskId = await client.apiKeyModelVerify.getModelVersioningByTaskId(HUB_TASK_ID);
+    console.log("GetModelVersioningByTaskId:", respGetModelVersioningByTaskId);
+
+    const respDeleteModelVersioningByModelId = await client.apiKeyModelVersioning.deleteModelVersioningByModelId(MODEL_ID, COMMIT_HASH);
+    console.log("DeleteModelVersioningByModelId:", respDeleteModelVersioningByModelId);
+
+    const respChangeCurrentModelVersioningByModelId = await client.apiKeyModelVersioning.changeCurrentModelVersioningByModelId(MODEL_ID, COMMIT_HASH);
+    console.log("ChangeCurrentModelVersioningByModelId:", respChangeCurrentModelVersioningByModelId);
+
+    const respGetCurrentModelVersioningByModelId = await client.apiKeyModelVersioning.getCurrentModelVersioningByModelId(MODEL_ID);
+    console.log("GetModelStatistics:", respGetCurrentModelVersioningByModelId);
 
   } catch (err) {
-    const pd = err.getProblemDetails();
-    console.log(pd)
-    console.log("status is:", pd.status);
-    console.log("message is:", pd.message);
+    console.log(err)
   }
 })();
+
 
 ```
 ## Documentation
