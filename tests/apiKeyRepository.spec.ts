@@ -14,7 +14,7 @@ describe("getCommitHistory", () => {
         const sha = "master";
 
         try {
-            const res = await sdk.apiKeyRepository.getCommitHistory(
+            const res = await sdk.apiKeyRepository.apiKeyRepositoryOwnerUsernameRepositoryNameCommitHistoryGet(
                 ownerUsername,
                 repositoryName,
                 page,

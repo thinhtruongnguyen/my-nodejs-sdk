@@ -10,7 +10,7 @@ describe("ApiKeyModelService", () => {
                 from: FROM,
                 to: TO,
             };
-            const res = await sdk.apiKeyModel.getModelStatistics(MODEL_ID, req);
+            const res = await sdk.apiKeyModel.apiKeyModelIdStatisticsPost(MODEL_ID, req);
             expect(res.status).toBeDefined();
             if (res.status === "success") {
                 expect(res.data).toBeDefined();
@@ -31,7 +31,7 @@ describe("ApiKeyModelService", () => {
 describe("getModelTaskCost", () => {
     it("should return model task cost or fail with 412 if no version", async () => {
         try {
-            const res = await sdk.apiKeyModel.getModelTaskCost(MODEL_ID);
+            const res = await sdk.apiKeyModel.apiKeyModelIdTaskCostGet(MODEL_ID);
             expect(res.status).toBeDefined();
             if (res.status === "success") {
                 expect(res.data).toBeDefined();
@@ -49,7 +49,7 @@ describe("getModelTaskCost", () => {
 describe("checkModelIsServing", () => {
     it("should return serving status for a valid model", async () => {
         try {
-            const res = await sdk.apiKeyModel.checkModelIsServing(MODEL_ID);
+            const res = await sdk.apiKeyModel.apiKeyModelIdServingGet(MODEL_ID);
             expect(res.status).toBeDefined();
             if (res.status === "success") {
                 expect(res.data).toBeDefined();
@@ -67,7 +67,7 @@ describe("checkModelIsServing", () => {
 describe("getModelInfo", () => {
     it("should return model info with modelId and description", async () => {
         try {
-            const res = await sdk.apiKeyModel.getModelInfo(MODEL_ID);
+            const res = await sdk.apiKeyModel.apiKeyModelIdInfoGet(MODEL_ID);
 
             expect(res.status).toBe("success");
             expect(res.data).toBeDefined();
@@ -83,7 +83,7 @@ describe("getModelInfo", () => {
 describe("getListPlatformsSupport", () => {
     it("should return a list of supported platforms", async () => {
         try {
-            const res = await sdk.apiKeyModel.getListPlatformsSupport();
+            const res = await sdk.apiKeyModel.apiKeyModelVerifySupportPlatformsGet();
             expect(res.status).toBe("success");
             expect(res.data).toBeDefined();
         } catch (err: any) {

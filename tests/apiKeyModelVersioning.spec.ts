@@ -12,7 +12,7 @@ describe("ApiKeyModelVersioningService", () => {
     describe("deleteModelVersioningByModelId", () => {
         it("should change delete versioning or handle error correctly", async () => {
             try {
-                const res = await sdk.apiKeyModelVersioning.deleteModelVersioningByModelId(
+                const res = await sdk.apiKeyModelVersioning.apiKeyModelIdVersioningDelete(
                     MODEL_ID,
                     COMMIT_HASH
                 );
@@ -31,7 +31,7 @@ describe("ApiKeyModelVersioningService", () => {
     describe("changeCurrentModelVersioningByModelId", () => {
         it("should change current versioning or handle error correctly", async () => {
             try {
-                const res = await sdk.apiKeyModelVersioning.changeCurrentModelVersioningByModelId(
+                const res = await sdk.apiKeyModelVersioning.apiKeyModelIdVersioningPut(
                     MODEL_ID,
                     COMMIT_HASH
                 );
@@ -49,7 +49,7 @@ describe("ApiKeyModelVersioningService", () => {
     describe("getListVerifiedModelVersioning", () => {
         it("should return a list (or empty) of verified model versioning", async () => {
             try {
-                const res = await sdk.apiKeyModelVersioning.getListVerifiedModelVersioning(
+                const res = await sdk.apiKeyModelVersioning.apiKeyModelIdVersioningListGet(
                     MODEL_ID,
                     OFFSET,
                     LIMIT,
@@ -70,7 +70,7 @@ describe("ApiKeyModelVersioningService", () => {
     describe("getCurrentModelVersioningByModelId", () => {
         it("should return current version info or handle not found error", async () => {
             try {
-                const res = await sdk.apiKeyModelVersioning.getCurrentModelVersioningByModelId(MODEL_ID);
+                const res = await sdk.apiKeyModelVersioning.apiKeyModelIdVersioningGet(MODEL_ID);
 
                 expect(res.status).toBeDefined();
 

@@ -12,7 +12,7 @@ describe("ApiKeyModelVerifyService", () => {
                     commitHash: COMMIT_HASH,
                     platforms: PLATFORMS,
                 };
-                const res = await sdk.apiKeyModelVerify.calculateCostToVerifyModel(
+                const res = await sdk.apiKeyModelVerify.apiKeyModelIdVerifyCostPost(
                     MODEL_ID,
                     request
                 );
@@ -36,7 +36,7 @@ describe("ApiKeyModelVerifyService", () => {
                     commitHash: COMMIT_HASH,
                     platforms: PLATFORMS,
                 };
-                const res = await sdk.apiKeyModelVerify.verifyModel(MODEL_ID, request);
+                const res = await sdk.apiKeyModelVerify.apiKeyModelIdVerifyPost(MODEL_ID, request);
                 expect(res.status).toBeDefined();
                 if (res.status === "success") {
                     expect(res.data).toBeDefined();
@@ -59,7 +59,7 @@ describe("ApiKeyModelVerifyService", () => {
                     commitHash: COMMIT_HASH,
                     platforms: PLATFORMS,
                 };
-                const res = await sdk.apiKeyModelVerify.preCheckToVerifyModel(MODEL_ID, request);
+                const res = await sdk.apiKeyModelVerify.apiKeyModelIdPreVerifyPost(MODEL_ID, request);
                 expect(res.status).toBeDefined();
                 if (res.status === "success") {
                     expect(res.data).toBeDefined();
@@ -74,7 +74,7 @@ describe("ApiKeyModelVerifyService", () => {
     describe("getVerifyPlatformTaskById", () => {
         it("handle error response", async () => {
             try {
-                const res = await sdk.apiKeyModelVerify.getVerifyPlatformTaskById(TASK_ID);
+                const res = await sdk.apiKeyModelVerify.apiKeyModelVerifyPlatformTaskIdGet(TASK_ID);
                 if (res.status === "success") {
                     expect(res.data).toBeDefined();
                 }
@@ -90,7 +90,7 @@ describe("ApiKeyModelVerifyService", () => {
     describe("getModelVersioningByTaskId (Integration)", () => {
         it("should handle success or not found/error response from real API", async () => {
             try {
-                const res = await sdk.apiKeyModelVerify.getModelVersioningByTaskId(HUB_TASK_ID);
+                const res = await sdk.apiKeyModelVerify.apiKeyModelVerifyHubTaskIdGet(HUB_TASK_ID);
                 expect(res.status).toBeDefined();
                 if (res.status === "success" && res.data) {
                     expect(res.data.modelId).toBeDefined();

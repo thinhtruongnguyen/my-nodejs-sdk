@@ -55,10 +55,10 @@ export default class ApiKeyModelService {
     }
 
 
-    public async getModelTaskCost(modelId: string): Promise<ResponseEstimateCostResponse> {
-        return this.getModelTaskCostHeaders(modelId).then((res) => res.body);
+    public async apiKeyModelIdTaskCostGet(modelId: string): Promise<ResponseEstimateCostResponse> {
+        return this.apiKeyModelIdTaskCostGetHeaders(modelId).then((res) => res.body);
     }
-    public async getModelTaskCostHeaders(modelId: string): Promise<{
+    public async apiKeyModelIdTaskCostGetHeaders(modelId: string): Promise<{
         headers: ApiResponseHeaders;
         body: ResponseEstimateCostResponse;
     }> {

@@ -19,7 +19,7 @@ describe("ApiKeyService", () => {
   describe("getApiKeyPermission", () => {
     it("should get API key permission successfully", async () => {
       try {
-        const res = await sdk.apiKey.getApiKeyPermission();
+        const res = await sdk.apiKey.apiKeyPermissionGet();
         expect(res.status).toBe("success");
         expect(res.data).toBeDefined();
         if (res.data) {
@@ -34,7 +34,7 @@ describe("ApiKeyService", () => {
   describe("getTaskHistories", () => {
     it("should return success even if no histories exist", async () => {
       try {
-        const res = await sdk.apiKey.getTaskHistories(10, 0);
+        const res = await sdk.apiKey.apiKeyTaskHistoriesGet(10, 0);
         expect(res.status).toBe("success");
         expect(res.data).toBeDefined();
         if (res.data) {
@@ -55,7 +55,7 @@ describe("ApiKeyService", () => {
     it("should handle success or not found response from real API", async () => {
       const taskId = "aea6944c-a808-4c11-b8de-557fe02d505f";
       try {
-        const res = await sdk.apiKey.getTaskResult(taskId);
+        const res = await sdk.apiKey.apiKeyTaskIdResultGet(taskId);
 
         expect(res.status).toBeDefined();
         if (res.status === "success") {
@@ -77,7 +77,7 @@ describe("ApiKeyService", () => {
       };
 
       try {
-        const res = await sdk.apiKey.createTask(request);
+        const res = await sdk.apiKey.apiKeyTaskPost(request);
         expect(res.status).toBeDefined();
         if (res.status === "success" && res.data) {
           expect(res.data).toBeDefined();
