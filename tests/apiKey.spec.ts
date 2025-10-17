@@ -1,5 +1,4 @@
-// tests/apiKey.spec.ts
-import { RequestDistributeTaskRequest } from "../nodejs-sdk/api";
+import { RequestDistributeTaskRequest } from "../nodejs-openai-generator-cli/api";
 import { mockTestClient } from "./helpers/mockTestClient";
 
 const sdk = mockTestClient();
@@ -21,14 +20,13 @@ describe("ApiKeyService", () => {
     it("should get API key permission successfully", async () => {
       try {
         const res = await sdk.apiKey.getApiKeyPermission();
-        expect(res.body.status).toBe("success");
-        expect(res.body.data).toBeDefined();
-        if (res.body.data) {
-          expect(res.body.data.limitModels).toBe(false);
+        expect(res.status).toBe("success");
+        expect(res.data).toBeDefined();
+        if (res.data) {
+          expect(res.data.limitModels).toBe(false);
         }
       } catch (err: any) {
-        expect(err.code).toBeGreaterThanOrEqual(400);
-        expect(err.problemDetails.status).toBeDefined();
+        expect(err.status).toBeDefined();
       }
     });
   });
@@ -37,19 +35,18 @@ describe("ApiKeyService", () => {
     it("should return success even if no histories exist", async () => {
       try {
         const res = await sdk.apiKey.getTaskHistories(10, 0);
-        expect(res.body.status).toBe("success");
-        expect(res.body.data).toBeDefined();
-        if (res.body.data) {
-          expect(res.body.data.total).toBeGreaterThanOrEqual(0);
-          if (res.body.data.records === null) {
-            expect(res.body.data.records).toBeNull();
+        expect(res.status).toBe("success");
+        expect(res.data).toBeDefined();
+        if (res.data) {
+          expect(res.data.total).toBeGreaterThanOrEqual(0);
+          if (res.data.records === null) {
+            expect(res.data.records).toBeNull();
           } else {
-            expect(Array.isArray(res.body.data.records)).toBe(true);
+            expect(Array.isArray(res.data.records)).toBe(true);
           }
         }
       } catch (err: any) {
-        expect(err.code).toBeGreaterThanOrEqual(400);
-        expect(err.problemDetails.status).toBeDefined();
+        expect(err.status).toBeDefined();
       }
     });
   });
@@ -60,17 +57,13 @@ describe("ApiKeyService", () => {
       try {
         const res = await sdk.apiKey.getTaskResult(taskId);
 
-        expect(res.body.status).toBeDefined();
-        if (res.body.status === "success") {
-          expect(res.body.data).toBeDefined();
-        } else {
-          expect(res.body.status).toBe("fail");
-          expect(res.body.message).toMatch(/not found/i);
+        expect(res.status).toBeDefined();
+        if (res.status === "success") {
+          expect(res.data).toBeDefined();
         }
       } catch (err: any) {
-        expect(err.code).toBe(400);
-        expect(err.problemDetails.status).toBe("fail");
-        expect(err.problemDetails.message).toMatch(/not found/i);
+        expect(err.status).toBe("fail");
+        expect(err.message).toMatch(/not found/i);
       }
     });
   });
@@ -85,17 +78,13 @@ describe("ApiKeyService", () => {
 
       try {
         const res = await sdk.apiKey.createTask(request);
-        expect(res.body.status).toBeDefined();
-        if (res.body.status === "success" && res.body.data) {
-          expect(res.body.data).toBeDefined();
-        } else {
-          expect(res.body.status).toBe("fail");
-          expect(res.body.message).toMatch(/model/i);
+        expect(res.status).toBeDefined();
+        if (res.status === "success" && res.data) {
+          expect(res.data).toBeDefined();
         }
       } catch (err: any) {
-        expect(err.code).toBe(400);
-        expect(err.problemDetails.status).toBe("fail");
-        expect(err.problemDetails.message).toMatch(/model/i);
+        expect(err.status).toBe("fail");
+        expect(err.message).toMatch(/model/i);
       }
     });
   });

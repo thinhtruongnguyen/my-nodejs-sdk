@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import SdkClient from "../../client";
+import SdkClient from "../../src/index";
 
 dotenv.config();
 

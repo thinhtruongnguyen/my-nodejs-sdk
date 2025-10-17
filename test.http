@@ -18,6 +18,10 @@
 @PAGE_SIZE=10
 @REPO_TYPE=
 
+### Cancel task
+DELETE {{BASE_URL}}api-key/task/{{TASK_ID}}/cancel
+x-api-key: {{API_KEY}}
+
 ### Get Balance
 GET {{BASE_URL}}api-key/balance
 x-api-key: {{API_KEY}}
