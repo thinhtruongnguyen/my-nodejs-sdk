@@ -19,11 +19,12 @@ async function run() {
 
   try {
     const respGetListVerifiedModelVersioning = await sdk.apiKeyModelVersioning.getListVerifiedModelVersioning(MODEL_ID, OFFSET, LIMIT, VERIFY_STATUS);
-    console.log("GetListVerifiedModelVersioning:", respGetListVerifiedModelVersioning);
+    console.log("GetListVerifiedModelVersioning is:", respGetListVerifiedModelVersioning);
+    console.log("GetListVerifiedModelVersioning status is:", respGetListVerifiedModelVersioning.status);
+    console.log("GetListVerifiedModelVersioning data(total) is:", respGetListVerifiedModelVersioning.data?.total);
 
   } catch (err: any) {
     console.log(err);
-
   }
 
 

@@ -1,139 +1,44 @@
 <!--<documentation_excluded>-->
-<h1 align="center">AIOZ Sdk Node.js client</h1>
+<h1 align="center">My Sdk Node.js client</h1>
 
 ## Project description
-Using w3ai-sdk package to querry data from W3AI Flatform by using APIKey. For example , Getting user balance, creating a task, getting task result, getting statistics and history of models, checking API permission ...
+Using my-sdk package to querry data from my Flatform by using APIKey. For example , Getting user balance, creating a task, getting task result, getting statistics and history of models, checking API permission ...
 
-To start, simply require the W3AI-SDK and set up an instance with your W3AI API Keys.Please checking out your W3AI Page. In the example below show you how to using the SDK.
+To start, simply require the my-SDK and set up an instance with your my API Keys.Please checking out your my Page. In the example below show you how to using the SDK.
 
 ## Getting started
 ## Installation
 With `npm`:
 ``` 
-npm i @meocam/nodejs-client
+npm i @meocam/nodejs-client-3
 ```
 
 ### Code sample
 
 ```typescript
-const SdkClient = require("@meocam/nodejs-client-2").default;
+const SdkClient = require("@meocam/nodejs-client-3").default;
 
 const client = new SdkClient({
-  apiKey: "d9eb2842bb95039bfc31196432a82998bc5930f4",
+    apiKey: "YOUR_API_KEY",
 });
 
-const MODEL_ID = "7332d265-171e-4055-9f2f-af51a52a82c4";
-const COMMIT_HASH = "ba271f290d732d6aa5902bf4d42103b516fcb7c2";
-const PLATFORMS = ["window"];
-const HUB_TASK_ID = "c2a6e7f5-15b4-461f-9b8a-4bcb8f8c4bcd";
-const TASK_ID = "aea6944c-a808-4c11-b8de-557fe02d505f";
-const FROM = "2023-05-07 15:04:05";
-const TO = "2023-05-07 15:04:05";
-const LIMIT = 10;
-const OFFSET = 0;
-const VERIFY_STATUS = "verified"
-const OWNER_USERNAME = "bohaha123-3333"
-const REPO_NAME = "HEHEE"
-const API_KEY = "d9eb2842bb95039bfc31196432a82998bc5930f4";
-const FILE_LIST = [
-  {
-    key: "input",
-    data: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Cat_August_2010-4.jpg/1200px-Cat_August_2010-4.jpg",
-    name: "image.jpg"
-  }
-];
-const INPUT_PARAMS = {
-  language1: "en",
-  language2: "vi"
-};
+const MODEL_ID = "YOUR_MODEL_ID";
+
+const LIMIT = YOUR_LIMIT;
+const OFFSET = YOUR_OFFSET;
+const VERIFY_STATUS = "YOUR_VERIFY_STATUS";
 
 
 (async () => {
-  try {
-    const request = {
-      from: FROM,
-      to: TO,
-    };
-    const requestCalculateCostToVerifyModel = {
-      commitHash: COMMIT_HASH,
-      platforms: PLATFORMS
-    };
+    try {
+        const respGetListVerifiedModelVersioning = await client.apiKeyModelVersioning.getListVerifiedModelVersioning(MODEL_ID, OFFSET, LIMIT, VERIFY_STATUS);
+        console.log("GetListVerifiedModelVersioning is:", respGetListVerifiedModelVersioning);
+        console.log("GetListVerifiedModelVersioning staus is:", respGetListVerifiedModelVersioning.status);
+        console.log("GetListVerifiedModelVersioning data(total) is:", respGetListVerifiedModelVersioning.data.total);
 
-    const respGetListVerifiedModelVersioning = await client.apiKeyModelVersioning.getListVerifiedModelVersioning(MODEL_ID, OFFSET, LIMIT, VERIFY_STATUS);
-    console.log("GetListVerifiedModelVersioning:", respGetListVerifiedModelVersioning);
-
-    const respVerifyModel = await client.apiKeyModelVerify.verifyModel(MODEL_ID, requestCalculateCostToVerifyModel);
-    console.log("verifyModel:", respVerifyModel);
-
-    const respGetListPlatformsSupport = await client.apiKeyModel.getListPlatformsSupport();
-    console.log("GetListPlatformsSupport:", respGetListPlatformsSupport);
-
-    const respGetModelStatistics = await client.apiKeyModel.getModelStatistics(MODEL_ID, request);
-    console.log("GetModelStatistics:", respGetModelStatistics);
-
-    const respGetModelInfo = await client.apiKeyModel.getModelInfo(MODEL_ID);
-    console.log("GetModelInfo:", respGetModelInfo);
-
-    const respBalance = await client.apiKey.getBalance();
-    console.log("Balance: ", respBalance)
-
-    const respGetApiKeyPermission = await client.apiKey.getApiKeyPermission()
-    console.log("GetApiKeyPermission:", respGetApiKeyPermission)
-
-    const respHistories = await client.apiKey.getTaskHistories(LIMIT, OFFSET);
-    console.log("GetTaskHistories:", respHistories);
-
-
-    const respGetApiKeyStatistics = await client.apiKey.getApiKeyStatistics(request, MODEL_ID);
-    console.log("GetApiKeyStatistics:", respGetApiKeyStatistics);
-
-    const requestCreateTask = {
-      files: FILE_LIST,
-      inputParams: INPUT_PARAMS,
-      modelId: MODEL_ID,
-    };
-    const respCreateTask = await client.apiKey.createTask(requestCreateTask);
-    console.log("createTask:", respCreateTask);
-
-    const respCancelTask = await client.apiKey.cancelTask(TASK_ID)
-    console.log("cancelTask:", respCancelTask);
-
-    const respTaskResult = await client.apiKey.getTaskResult(TASK_ID);
-    console.log("GetTaskResult:", respTaskResult);
-
-    const respCheckModelIsServing = await client.apiKeyModel.checkModelIsServing(MODEL_ID);
-    console.log("CheckModelIsServing:", respCheckModelIsServing);
-
-    const respGetModelTaskCost = await client.apiKeyModel.getModelTaskCost(MODEL_ID);
-    console.log("GetModelTaskCost:", respGetModelTaskCost);
-
-    const respCalculateCostToVerifyModel = await client.apiKeyModelVerify.calculateCostToVerifyModel(MODEL_ID, requestCalculateCostToVerifyModel);
-    console.log("CalculateCostToVerifyModel:", respCalculateCostToVerifyModel);
-
-    const respPreCheckToVerifyModel = await client.apiKeyModelVerify.preCheckToVerifyModel(MODEL_ID, requestCalculateCostToVerifyModel);
-    console.log("PreCheckToVerifyModel:", respPreCheckToVerifyModel);
-
-    const respGetListVerifyModelTaskByCommitHashAndStatus = await client.apiKeyModelVerify.getListVerifyModelTaskByCommitHashAndStatus(MODEL_ID, COMMIT_HASH, VERIFY_STATUS);
-    console.log("GetListVerifyModelTaskByCommitHashAndStatus:", respGetListVerifyModelTaskByCommitHashAndStatus);
-
-    const respGetVerifyPlatformTaskById = await client.apiKeyModelVerify.getVerifyPlatformTaskById(TASK_ID);
-    console.log("GetVerifyPlatformTaskById:", respGetVerifyPlatformTaskById);
-
-    const respGetModelVersioningByTaskId = await client.apiKeyModelVerify.getModelVersioningByTaskId(HUB_TASK_ID);
-    console.log("GetModelVersioningByTaskId:", respGetModelVersioningByTaskId);
-
-    const respDeleteModelVersioningByModelId = await client.apiKeyModelVersioning.deleteModelVersioningByModelId(MODEL_ID, COMMIT_HASH);
-    console.log("DeleteModelVersioningByModelId:", respDeleteModelVersioningByModelId);
-
-    const respChangeCurrentModelVersioningByModelId = await client.apiKeyModelVersioning.changeCurrentModelVersioningByModelId(MODEL_ID, COMMIT_HASH);
-    console.log("ChangeCurrentModelVersioningByModelId:", respChangeCurrentModelVersioningByModelId);
-
-    const respGetCurrentModelVersioningByModelId = await client.apiKeyModelVersioning.getCurrentModelVersioningByModelId(MODEL_ID);
-    console.log("GetModelStatistics:", respGetCurrentModelVersioningByModelId);
-
-  } catch (err) {
-    console.log(err)
-  }
+    } catch (err) {
+        console.log(err)
+    }
 })();
 
 
@@ -268,12 +173,13 @@ const INPUT_PARAMS = {
 
 #### API key
 
-All of API request to be authenticated using the API key that be described in our [documentation](https://w3ai.xyz/docs/home).
+All of API request to be authenticated using the API key that be described in our [documentation](abc.com).
 
 First of all you have to do is provided an API key when instantiating the W3AIClient:
 ```typescript
-   var param :SdkParams = {apiKey: "YOUR_API_KEY"}
-   const client = new W3AIClient(
-   param
-);
+  const SdkClient = require("@meocam/nodejs-client-3").default;
+
+  const client = new SdkClient({
+    apiKey: "YOUR_API_KEY",
+});
 ```
