@@ -15,10 +15,10 @@ export default class ApiKeyModelVersioningService {
     }
 
 
-    public async deleteModelVersioningByModelId(modelId: string, commitHash: string): Promise<ResponseSuccessResponse> {
-        return this.deleteModelVersioningByModelIdHeaders(modelId, commitHash).then((res) => res.body);
+    public async apiKeyModelIdVersioningDelete(modelId: string, commitHash: string): Promise<ResponseSuccessResponse> {
+        return this.apiKeyModelIdVersioningDeleteHeaders(modelId, commitHash).then((res) => res.body);
     }
-    public async deleteModelVersioningByModelIdHeaders(
+    public async apiKeyModelIdVersioningDeleteHeaders(
         modelId: string,
         commitHash: string
     ): Promise<{
@@ -50,10 +50,10 @@ export default class ApiKeyModelVersioningService {
     }
 
 
-    public async changeCurrentModelVersioningByModelId(modelId: string, commitHash: string): Promise<ResponseSuccessResponse> {
-        return this.changeCurrentModelVersioningByModelIdHeaders(modelId, commitHash).then((res) => res.body);
+    public async apiKeyModelIdVersioningPut(modelId: string, commitHash: string): Promise<ResponseSuccessResponse> {
+        return this.apiKeyModelIdVersioningPutHeaders(modelId, commitHash).then((res) => res.body);
     }
-    public async changeCurrentModelVersioningByModelIdHeaders(
+    public async apiKeyModelIdVersioningPutHeaders(
         modelId: string,
         commitHash: string
     ): Promise<{
@@ -85,10 +85,10 @@ export default class ApiKeyModelVersioningService {
     }
 
 
-    public async getListVerifiedModelVersioning(modelId: string, offset: number, limit: number, verifyStatus: string): Promise<ResponseGetListModelVersioningLiteResponse> {
-        return this.getListVerifiedModelVersioningHeaders(modelId, offset, limit, verifyStatus).then((res) => res.body);
+    public async apiKeyModelIdVersioningListGet(modelId: string, offset: number, limit: number, verifyStatus: string): Promise<ResponseGetListModelVersioningLiteResponse> {
+        return this.apiKeyModelIdVersioningListGetHeaders(modelId, offset, limit, verifyStatus).then((res) => res.body);
     }
-    public async getListVerifiedModelVersioningHeaders(
+    public async apiKeyModelIdVersioningListGetHeaders(
         modelId: string,
         offset: number,
         limit: number,
@@ -122,10 +122,10 @@ export default class ApiKeyModelVersioningService {
     }
 
 
-    public async getCurrentModelVersioningByModelId(modelId: string): Promise<ResponseModelVersioningGroupLiteResponse> {
-        return this.getCurrentModelVersioningByModelIdHeaders(modelId).then((res) => res.body);
+    public async apiKeyModelIdVersioningGet(modelId: string): Promise<ResponseModelVersioningGroupLiteResponse> {
+        return this.apiKeyModelIdVersioningGetHeaders(modelId).then((res) => res.body);
     }
-    public async getCurrentModelVersioningByModelIdHeaders(modelId: string): Promise<{
+    public async apiKeyModelIdVersioningGetHeaders(modelId: string): Promise<{
         headers: ApiResponseHeaders;
         body: ResponseModelVersioningGroupLiteResponse;
     }> {

@@ -11,21 +11,21 @@ export default class ApiKeyRepositoryService {
         this.httpClient = httpClient;
     }
 
-    public async getCommitHistory(ownerUsername: string,
+    public async apiKeyRepositoryOwnerUsernameRepositoryNameCommitHistoryGet(ownerUsername: string,
         repositoryName: string,
         page: number,
         pageSize: number,
         path: string,
         repoType: string,
         sha: string): Promise<ResponseGetCommitHistoryResponse> {
-        return this.getCommitHistoryHeaders(ownerUsername,
+        return this.apiKeyRepositoryOwnerUsernameRepositoryNameCommitHistoryGetHeaders(ownerUsername,
             repositoryName,
             page,
             pageSize,
             path,
             repoType, sha).then((res) => res.body);
     }
-    public async getCommitHistoryHeaders(
+    public async apiKeyRepositoryOwnerUsernameRepositoryNameCommitHistoryGetHeaders(
         ownerUsername: string,
         repositoryName: string,
         page: number,

@@ -19,11 +19,11 @@ export default class ApiKeyModelVerifyService {
         this.httpClient = httpClient;
     }
 
-    public async calculateCostToVerifyModel(modelId: string,
+    public async apiKeyModelIdVerifyCostPost(modelId: string,
         request: RequestCalculateCostToVerifyAiModelRequest): Promise<ResponseEstimateCostResponse> {
-        return this.calculateCostToVerifyModelHeaders(modelId, request).then((res) => res.body);
+        return this.apiKeyModelIdVerifyCostPostHeaders(modelId, request).then((res) => res.body);
     }
-    public async calculateCostToVerifyModelHeaders(
+    public async apiKeyModelIdVerifyCostPostHeaders(
         modelId: string,
         request: RequestCalculateCostToVerifyAiModelRequest,
     ): Promise<{
@@ -55,10 +55,10 @@ export default class ApiKeyModelVerifyService {
     }
 
 
-    public async verifyModel(modelId: string, request: RequestVerifyAiModelRequest): Promise<ResponseVerifyAiModelResponse> {
-        return this.verifyModelHeaders(modelId, request).then((res) => res.body);
+    public async apiKeyModelIdVerifyPost(modelId: string, request: RequestVerifyAiModelRequest): Promise<ResponseVerifyAiModelResponse> {
+        return this.apiKeyModelIdVerifyPostHeaders(modelId, request).then((res) => res.body);
     }
-    public async verifyModelHeaders(
+    public async apiKeyModelIdVerifyPostHeaders(
         modelId: string,
         request: RequestVerifyAiModelRequest,
     ): Promise<{
@@ -90,10 +90,10 @@ export default class ApiKeyModelVerifyService {
     }
 
 
-    public async preCheckToVerifyModel(modelId: string, request: RequestCheckValidToVerifyAiModelRequest): Promise<ResponseCheckValidToVerifyAiModelResponse> {
-        return this.preCheckToVerifyModelHeaders(modelId, request).then((res) => res.body);
+    public async apiKeyModelIdPreVerifyPost(modelId: string, request: RequestCheckValidToVerifyAiModelRequest): Promise<ResponseCheckValidToVerifyAiModelResponse> {
+        return this.apiKeyModelIdPreVerifyPostHeaders(modelId, request).then((res) => res.body);
     }
-    public async preCheckToVerifyModelHeaders(
+    public async apiKeyModelIdPreVerifyPostHeaders(
         modelId: string,
         request: RequestCheckValidToVerifyAiModelRequest,
     ): Promise<{
@@ -125,11 +125,11 @@ export default class ApiKeyModelVerifyService {
     }
 
 
-    public async getListVerifyModelTaskByCommitHashAndStatus(modelId: string, commitHash: string, status: string
+    public async apiKeyModelIdVerifyTaskGet(modelId: string, commitHash: string, status: string
     ): Promise<ResponseModelVersioningGroupLiteListResponse> {
-        return this.getListVerifyModelTaskByCommitHashAndStatusHeaders(modelId, commitHash, status).then((res) => res.body);
+        return this.apiKeyModelIdVerifyTaskGetHeaders(modelId, commitHash, status).then((res) => res.body);
     }
-    public async getListVerifyModelTaskByCommitHashAndStatusHeaders(
+    public async apiKeyModelIdVerifyTaskGetHeaders(
         modelId: string,
         commitHash: string,
         status: string
@@ -162,10 +162,10 @@ export default class ApiKeyModelVerifyService {
         };
     }
 
-    public async getVerifyPlatformTaskById(taskId: string): Promise<ResponseQueueTaskResponse> {
-        return this.getVerifyPlatformTaskByIdHeaders(taskId).then((res) => res.body);
+    public async apiKeyModelVerifyPlatformTaskIdGet(taskId: string): Promise<ResponseQueueTaskResponse> {
+        return this.apiKeyModelVerifyPlatformTaskIdGetHeaders(taskId).then((res) => res.body);
     }
-    public async getVerifyPlatformTaskByIdHeaders(
+    public async apiKeyModelVerifyPlatformTaskIdGetHeaders(
         taskId: string,
     ): Promise<{
         headers: ApiResponseHeaders;
@@ -192,10 +192,10 @@ export default class ApiKeyModelVerifyService {
         };
     }
 
-    public async getModelVersioningByTaskId(taskId: string): Promise<ResponseModelVersioningResponse> {
-        return this.getVerifyPlatformTaskByIdHeaders(taskId).then((res) => res.body);
+    public async apiKeyModelVerifyHubTaskIdGet(taskId: string): Promise<ResponseModelVersioningResponse> {
+        return this.apiKeyModelVerifyHubTaskIdGetHeaders(taskId).then((res) => res.body);
     }
-    public async getModelVersioningByTaskIdHeaders(
+    public async apiKeyModelVerifyHubTaskIdGetHeaders(
         taskId: string,
     ): Promise<{
         headers: ApiResponseHeaders;

@@ -19,13 +19,13 @@ export default class ApiKeyService {
     this.httpClient = httpClient;
   }
 
-  public async cancelTask(
+  public async apiKeyTaskIdCancelDelete(
     taskId: string
   ): Promise<ResponseSuccessResponse> {
-    const res = await this.cancelTaskHeaders(taskId);
+    const res = await this.apiKeyTaskIdCancelDeleteHeaders(taskId);
     return res.body;
   }
-  public async cancelTaskHeaders(
+  public async apiKeyTaskIdCancelDeleteHeaders(
     taskId: string
   ): Promise<{
     headers: ApiResponseHeaders;
@@ -52,8 +52,13 @@ export default class ApiKeyService {
     };
   }
 
-
-  public async createTaskHeaders(
+  public async apiKeyTaskPost(
+    request: RequestDistributeTaskRequest
+  ): Promise<ResponseDistributeTaskResponse> {
+    const res = await this.apiKeyTaskPostHeaders(request);
+    return res.body;
+  }
+  public async apiKeyTaskPostHeaders(
     request: RequestDistributeTaskRequest,
   ): Promise<{
     headers: ApiResponseHeaders;
@@ -83,22 +88,17 @@ export default class ApiKeyService {
       body: deserialized,
     };
   }
-  public async createTask(
-    request: RequestDistributeTaskRequest
-  ): Promise<ResponseDistributeTaskResponse> {
-    const res = await this.createTaskHeaders(request);
-    return res.body;
-  }
 
 
-  public async getApiKeyStatistics(
+
+  public async apiKeyStatisticsPost(
     request: RequestGetApiKeyStatisticsByModelIdRequest,
     modelId: string
   ): Promise<ResponseGetTaskStatisticsResponse> {
-    const res = await this.getApiKeyStatisticsHeaders(request, modelId);
+    const res = await this.apiKeyStatisticsPostHeaders(request, modelId);
     return res.body;
   }
-  public async getApiKeyStatisticsHeaders(
+  public async apiKeyStatisticsPostHeaders(
     request: RequestGetApiKeyStatisticsByModelIdRequest,
     modelId: string
   ): Promise<{
@@ -135,8 +135,10 @@ export default class ApiKeyService {
   }
 
 
-
-  public async getBalanceHeaders(): Promise<{
+ public async apiKeyBalanceGet(): Promise<ResponseWalletWithAddressResponse> {
+    return this.apiKeyBalanceGetHeaders().then((res) => res.body);
+  }
+  public async apiKeyBalanceGetHeaders(): Promise<{
     headers: ApiResponseHeaders;
     body: ResponseWalletWithAddressResponse;
   }> {
@@ -158,18 +160,16 @@ export default class ApiKeyService {
       body: deserialized,
     };
   }
-  public async getBalance(): Promise<ResponseWalletWithAddressResponse> {
-    return this.getBalanceHeaders().then((res) => res.body);
-  }
+ 
 
 
-  public async getTaskResult(
+  public async apiKeyTaskIdResultGet(
     taskId: string
   ): Promise<ResponseGetTaskResultResponse> {
-    const res = await this.getTaskResultHeaders(taskId);
+    const res = await this.apiKeyTaskIdResultGetHeaders(taskId);
     return res.body;
   }
-  public async getTaskResultHeaders(
+  public async apiKeyTaskIdResultGetHeaders(
     taskId: string,
   ): Promise<{
     headers: ApiResponseHeaders;
@@ -195,7 +195,13 @@ export default class ApiKeyService {
     };
   }
 
-  public async getTaskHistoriesHeaders(
+  public async apiKeyTaskHistoriesGet(
+    limit: number = 10,
+    offset: number = 0
+  ): Promise<ResponseApiKeyHistoryListResponse> {
+    return this.apiKeyTaskHistoriesGetHeaders(limit, offset).then((res) => res.body);
+  }
+  public async apiKeyTaskHistoriesGetHeaders(
     limit: number,
     offset: number
   ): Promise<{
@@ -223,18 +229,13 @@ export default class ApiKeyService {
       body: deserialized,
     };
   }
-  public async getTaskHistories(
-    limit: number = 10,
-    offset: number = 0
-  ): Promise<ResponseApiKeyHistoryListResponse> {
-    return this.getTaskHistoriesHeaders(limit, offset).then((res) => res.body);
-  }
+  
 
 
-  public async getApiKeyPermission(): Promise<ResponseGetApiKeyPermissionResponse> {
-    return this.getApiKeyPermissionHeaders().then((res) => res.body);
+  public async apiKeyPermissionGet(): Promise<ResponseGetApiKeyPermissionResponse> {
+    return this.apiKeyPermissionGetHeaders().then((res) => res.body);
   }
-  public async getApiKeyPermissionHeaders(): Promise<{
+  public async apiKeyPermissionGetHeaders(): Promise<{
     headers: ApiResponseHeaders;
     body: ResponseGetApiKeyPermissionResponse;
   }> {

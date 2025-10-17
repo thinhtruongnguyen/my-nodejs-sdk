@@ -31,10 +31,10 @@ const VERIFY_STATUS = "YOUR_VERIFY_STATUS";
 
 (async () => {
     try {
-        const respGetListVerifiedModelVersioning = await client.apiKeyModelVersioning.getListVerifiedModelVersioning(MODEL_ID, OFFSET, LIMIT, VERIFY_STATUS);
-        console.log("GetListVerifiedModelVersioning is:", respGetListVerifiedModelVersioning);
-        console.log("GetListVerifiedModelVersioning staus is:", respGetListVerifiedModelVersioning.status);
-        console.log("GetListVerifiedModelVersioning data(total) is:", respGetListVerifiedModelVersioning.data.total);
+        const respapiKeyModelIdVersioningListGet = await sdk.apiKeyModelVersioning.apiKeyModelIdVersioningListGet(MODEL_ID, OFFSET, LIMIT, VERIFY_STATUS);
+        console.log("apiKeyModelIdVersioningListGet is:", respapiKeyModelIdVersioningListGet);
+        console.log("apiKeyModelIdVersioningListGet status is:", respapiKeyModelIdVersioningListGet.status);
+        console.log("apiKeyModelIdVersioningListGet data(total) is:", respapiKeyModelIdVersioningListGet.data?.total);
 
     } catch (err) {
         console.log(err)

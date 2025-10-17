@@ -18,10 +18,10 @@ const sdk = new SdkClient({ apiKey: API_KEY });
 async function run() {
 
   try {
-    const respGetListVerifiedModelVersioning = await sdk.apiKeyModelVersioning.getListVerifiedModelVersioning(MODEL_ID, OFFSET, LIMIT, VERIFY_STATUS);
-    console.log("GetListVerifiedModelVersioning is:", respGetListVerifiedModelVersioning);
-    console.log("GetListVerifiedModelVersioning status is:", respGetListVerifiedModelVersioning.status);
-    console.log("GetListVerifiedModelVersioning data(total) is:", respGetListVerifiedModelVersioning.data?.total);
+    const respapiKeyModelIdVersioningListGet = await sdk.apiKeyModelVersioning.apiKeyModelIdVersioningListGet(MODEL_ID, OFFSET, LIMIT, VERIFY_STATUS);
+    console.log("apiKeyModelIdVersioningListGet is:", respapiKeyModelIdVersioningListGet);
+    console.log("apiKeyModelIdVersioningListGet status is:", respapiKeyModelIdVersioningListGet.status);
+    console.log("apiKeyModelIdVersioningListGet data(total) is:", respapiKeyModelIdVersioningListGet.data?.total);
 
   } catch (err: any) {
     console.log(err);

@@ -17,11 +17,11 @@ export default class ApiKeyModelService {
     }
 
 
-    public async getModelStatistics(modelId: string,
+    public async apiKeyModelIdStatisticsPost(modelId: string,
         request: RequestGetApiKeyStatisticsByModelIdRequest): Promise<ResponseGetTaskStatisticsResponse> {
-        return this.getModelStatisticsHeaders(modelId, request).then((res) => res.body);
+        return this.apiKeyModelIdStatisticsPostHeaders(modelId, request).then((res) => res.body);
     }
-    public async getModelStatisticsHeaders(
+    public async apiKeyModelIdStatisticsPostHeaders(
         modelId: string,
         request: RequestGetApiKeyStatisticsByModelIdRequest,
     ): Promise<{
@@ -82,10 +82,10 @@ export default class ApiKeyModelService {
         };
     }
 
-    public async checkModelIsServing(modelId: string): Promise<ResponseCheckModelIsServingResponse> {
-        return this.checkModelIsServingHeaders(modelId).then((res) => res.body);
+    public async apiKeyModelIdServingGet(modelId: string): Promise<ResponseCheckModelIsServingResponse> {
+        return this.apiKeyModelIdServingGetHeaders(modelId).then((res) => res.body);
     }
-    public async checkModelIsServingHeaders(modelId: string): Promise<{
+    public async apiKeyModelIdServingGetHeaders(modelId: string): Promise<{
         headers: ApiResponseHeaders;
         body: ResponseCheckModelIsServingResponse;
     }> {
@@ -109,10 +109,10 @@ export default class ApiKeyModelService {
         };
     }
 
-    public async getModelInfo(modelId: string): Promise<ResponseApiKeyInfoResponse> {
-        return this.getModelInfoHeaders(modelId).then((res) => res.body);
+    public async apiKeyModelIdInfoGet(modelId: string): Promise<ResponseApiKeyInfoResponse> {
+        return this.apiKeyModelIdInfoGetHeaders(modelId).then((res) => res.body);
     }
-    public async getModelInfoHeaders(modelId: string): Promise<{
+    public async apiKeyModelIdInfoGetHeaders(modelId: string): Promise<{
         headers: ApiResponseHeaders;
         body: ResponseApiKeyInfoResponse;
     }> {
@@ -136,10 +136,10 @@ export default class ApiKeyModelService {
         };
     }
 
-    public async getListPlatformsSupport(): Promise<ResponseGetListPlatformSupportResponse> {
-        return this.getListPlatformsSupportHeaders().then((res) => res.body);
+    public async apiKeyModelVerifySupportPlatformsGet(): Promise<ResponseGetListPlatformSupportResponse> {
+        return this.apiKeyModelVerifySupportPlatformsGetHeaders().then((res) => res.body);
     }
-    public async getListPlatformsSupportHeaders(): Promise<{
+    public async apiKeyModelVerifySupportPlatformsGetHeaders(): Promise<{
         headers: ApiResponseHeaders;
         body: ResponseGetListPlatformSupportResponse;
     }> {
