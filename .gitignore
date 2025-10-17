@@ -4,3 +4,4 @@ specs/
 scripts/commands.txt
 node_modules/
 lib/
+test.http

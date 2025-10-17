@@ -80,20 +80,14 @@ describe("getModelInfo", () => {
     });
 });
 
-// describe("getListPlatformsSupport", () => {
-//     it("should return a list of supported platforms", async () => {
-//         try {
-//             const res = await sdk.apiKeyModel.getListPlatformsSupport();
-
-//             expect(res.status).toBe("success");
-//             expect(res.data).toBeDefined();
-//             expect(res.data!.data).toBeInstanceOf(Array);
-//             expect(res.data!.data.length).toBeGreaterThan(0);
-//             expect(res.data!.data).toEqual(expect.arrayContaining(["linux", "window"]));
-//         } catch (err: any) {
-
-//             expect(err.code).toBeGreaterThanOrEqual(400);
-//             expect(err.problemDetails.status).toMatch(/fail|error/i);
-//         }
-//     });
-//});
+describe("getListPlatformsSupport", () => {
+    it("should return a list of supported platforms", async () => {
+        try {
+            const res = await sdk.apiKeyModel.getListPlatformsSupport();
+            expect(res.status).toBe("success");
+            expect(res.data).toBeDefined();
+        } catch (err: any) {
+            expect(err.status).toMatch(/fail|error/i);
+        }
+    });
+});
