@@ -1,6 +1,6 @@
 {
-  "name": "@meocam/nodejs-client-2",
-  "version": "1.0.5",
+  "name": "@meocam/nodejs-client-3",
+  "version": "1.0.0",
   "description": "Auto-generated NodeJS SDK for MeoCam API",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "prebuild": "npm run clean",
-    "build": "tsc",
+    "build": "npm run clean && tsc",
     "clean": "rm -rf lib",
     "start": "node lib/src/main.js",
     "dev": "ts-node src/main.ts",
