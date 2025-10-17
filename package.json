@@ -1,6 +1,6 @@
 {
   "name": "@meocam/nodejs-client-3",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Auto-generated NodeJS SDK for MeoCam API",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
