@@ -2,7 +2,7 @@ import HttpClient, { ApiResponseHeaders, QueryOptions } from "../HttpClient";
 import {
     ObjectSerializer,
     ResponseGetCommitHistoryResponse,
-} from "../../nodejs-openai-generator-cli/api";
+} from "../../nodejs-openapi-generator-cli/api";
 
 export default class ApiKeyRepositoryService {
     private readonly httpClient: HttpClient;

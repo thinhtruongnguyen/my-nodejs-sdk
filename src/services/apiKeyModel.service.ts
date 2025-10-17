@@ -7,7 +7,7 @@ import {
     ResponseEstimateCostResponse,
     ResponseGetListPlatformSupportResponse,
     ResponseGetTaskStatisticsResponse,
-} from "../../nodejs-openai-generator-cli/api";
+} from "../../nodejs-openapi-generator-cli/api";
 
 export default class ApiKeyModelService {
     private readonly httpClient: HttpClient;

@@ -10,7 +10,7 @@ import {
     ResponseModelVersioningResponse,
     ResponseQueueTaskResponse,
     ResponseVerifyAiModelResponse
-} from "../../nodejs-openai-generator-cli/api";
+} from "../../nodejs-openapi-generator-cli/api";
 
 export default class ApiKeyModelVerifyService {
     private readonly httpClient: HttpClient;

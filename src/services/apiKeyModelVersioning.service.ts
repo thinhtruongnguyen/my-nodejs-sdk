@@ -5,7 +5,7 @@ import {
     ResponseModelVersioningGroupLiteResponse,
     ResponseSuccessResponse,
 
-} from "../../nodejs-openai-generator-cli/api";
+} from "../../nodejs-openapi-generator-cli/api";
 
 export default class ApiKeyModelVersioningService {
     private readonly httpClient: HttpClient;

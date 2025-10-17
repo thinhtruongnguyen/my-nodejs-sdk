@@ -10,7 +10,7 @@ import {
   ResponseGetTaskStatisticsResponse,
   ResponseSuccessResponse,
   ResponseWalletWithAddressResponse
-} from "../../nodejs-openai-generator-cli/model/models";
+} from "../../nodejs-openapi-generator-cli/model/models";
 
 export default class ApiKeyService {
   private readonly httpClient: HttpClient;

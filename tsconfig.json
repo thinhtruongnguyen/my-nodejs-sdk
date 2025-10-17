@@ -16,7 +16,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "nodejs-openai-generator-cli",
+    "nodejs-openapi-generator-cli",
   ],
   "exclude": [
     "node_modules",

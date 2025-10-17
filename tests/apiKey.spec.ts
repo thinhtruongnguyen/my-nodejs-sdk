@@ -1,4 +1,4 @@
-import { RequestDistributeTaskRequest } from "../nodejs-openai-generator-cli/api";
+import { RequestDistributeTaskRequest } from "../nodejs-openapi-generator-cli/api";
 import { mockTestClient } from "./helpers/mockTestClient";
 
 const sdk = mockTestClient();

@@ -5,7 +5,7 @@ import {
   RequestDistributeTaskRequest,
   RequestGetApiKeyStatisticsByModelIdRequest,
   RequestVerifyAiModelRequest
-} from "../nodejs-openai-generator-cli/api";
+} from "../nodejs-openapi-generator-cli/api";
 import {
   MODEL_ID, INPUT_PARAMS,
   COMMIT_HASH, FILE_LIST,
